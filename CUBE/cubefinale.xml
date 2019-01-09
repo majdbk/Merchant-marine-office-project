@@ -1,0 +1,66 @@
+<Schema name="shcube">
+  <Cube name="cubo" visible="true" cache="true" enabled="true">
+    <Table name="factport" schema="public">
+    </Table>
+    <Dimension type="StandardDimension" visible="true" foreignKey="fkagentmaritime" highCardinality="false" name="dimagent">
+      <Hierarchy name="dimagent" visible="true" hasAll="true" primaryKey="idagent">
+        <Table name="dimagentmaritime" schema="public">
+        </Table>
+        <Level name="nameagent" visible="true" table="dimagentmaritime" column="nameagent" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never" captionColumn="nameagent">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="fkconcessio" highCardinality="false" name="dimcon">
+      <Hierarchy name="dimcon" visible="true" hasAll="true" primaryKey="idclient">
+        <Table name="dimconcessio" schema="public">
+        </Table>
+        <Level name="namecon" visible="true" table="dimconcessio" column="nameclient" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never" captionColumn="nameclient">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="fkrubrique" highCardinality="false" name="dimrub">
+      <Hierarchy name="dimrub" visible="true" hasAll="true" primaryKey="idrubrique">
+        <Table name="dimrubrique" schema="public">
+        </Table>
+        <Level name="num" visible="true" table="dimrubrique" column="number" type="Integer" uniqueMembers="true" levelType="Regular" hideMemberIf="Never" captionColumn="number">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="fkcategory" highCardinality="false" name="dimcateg">
+      <Hierarchy name="dimcateg" visible="true" hasAll="true" primaryKey="idcategory">
+        <Table name="dimcategoty" schema="public">
+        </Table>
+        <Level name="namecat" visible="true" table="dimcategoty" column="namecategory" type="String" uniqueMembers="true" levelType="Regular" hideMemberIf="Never" captionColumn="namecategory">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="fkdatearrive" highCardinality="false" name="dimtemparrv">
+      <Hierarchy name="dimtemparrv" visible="true" hasAll="true" primaryKey="temps_pk">
+        <Table name="dimtemps" schema="public">
+        </Table>
+        <Level name="year" visible="true" table="dimtemps" column="year" type="Integer" uniqueMembers="true" levelType="Regular" hideMemberIf="Never" captionColumn="year">
+        </Level>
+        <Level name="month" visible="true" table="dimtemps" column="lib_month" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="lib_month">
+        </Level>
+        <Level name="day" visible="true" table="dimtemps" column="lib_day" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="lib_day">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="fkdateenlev" highCardinality="false" name="dimtempenlev">
+      <Hierarchy name="dimtempenlev" visible="true" hasAll="true" primaryKey="temps_pk">
+        <Table name="dimtemps" schema="public">
+        </Table>
+        <Level name="year" visible="true" table="dimtemps" column="year" type="Integer" uniqueMembers="true" levelType="Regular" hideMemberIf="Never" captionColumn="year">
+        </Level>
+        <Level name="month" visible="true" table="dimtemps" column="lib_month" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="lib_month">
+        </Level>
+        <Level name="day" visible="true" table="dimtemps" column="lib_day" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="lib_day">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Measure name="quantitee" column="quantite" datatype="Integer" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="quantiteenleve" column="quantiteenleve" datatype="Integer" aggregator="sum" visible="true">
+    </Measure>
+  </Cube>
+</Schema>

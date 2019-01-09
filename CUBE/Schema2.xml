@@ -1,0 +1,28 @@
+<Schema name="New Schema2">
+  <Dimension type="StandardDimension" visible="true" name="dimagent">
+    <Hierarchy name="dimagent" visible="true" hasAll="true">
+      <Table name="dimagentmaritime" schema="public" alias="">
+      </Table>
+      <Level name="nameagent" visible="true" column="nameagent" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" name="dimcon">
+    <Hierarchy name="dimcon" visible="true" hasAll="true">
+      <Table name="dimconcessio" schema="public" alias="">
+      </Table>
+      <Level name="namecon" visible="true" column="nameclient" type="String" uniqueMembers="false" levelType="Regular">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Cube name="cuba" visible="true" cache="true" enabled="true">
+    <Table name="factport" schema="public" alias="">
+    </Table>
+    <DimensionUsage source="dimagent" name="dimagent" visible="true" foreignKey="fkagentmaritime">
+    </DimensionUsage>
+    <DimensionUsage source="dimcon" name="dimcon" visible="true" foreignKey="fkconcessio">
+    </DimensionUsage>
+    <Measure name="quantite" column="quantite" datatype="Numeric" aggregator="distinct-count" visible="true">
+    </Measure>
+  </Cube>
+</Schema>
